@@ -5,6 +5,13 @@ MEMORY_SIZE = 4096
 class Memory:
     def __init__(self):
         self.memory = [0] * MEMORY_SIZE
+        self.stack = [0] * 16 # Adiciona Pilha
+
+    def push_stack(self, value):
+        self.stack.append(value)
+
+    def pop_stack(self):
+        return self.stack.pop()
 
 
 class Registers:
@@ -29,3 +36,8 @@ class Registers:
 
     def get_register(self, register):
         return self.V[register]
+
+
+memory_test = Memory()
+
+print(memory_test.memory)
