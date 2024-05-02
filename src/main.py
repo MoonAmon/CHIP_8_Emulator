@@ -1,9 +1,9 @@
 import time
 import random
 import sys
-from config import *
-from emulator import *
-from gui import *
+from src.emulator.cpu import *
+from src.emulator.peripherals.screen import *
+
 
 
 def tick_emulator():
@@ -15,4 +15,7 @@ def handle_emulator_error(e):
 
 
 def main(romfile, speed):
-    pass
+    emulator = Chip8()
+    gui = Screen(64, 32, 10)
+
+    load_program(romfile)

@@ -11,9 +11,6 @@ class Screen:
     def set_pixel(self, x, y, value):
         self.display[y][x] = value
 
-    def get_pixel(self, x, y):
-        return self.display[y][x]
-
     def draw(self):
         for y, row in enumerate(self.display):
             for x, pixel in enumerate(row):

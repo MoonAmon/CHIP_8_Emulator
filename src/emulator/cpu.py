@@ -1,15 +1,7 @@
 import pygame
 from src.emulator.peripherals.memory import *
 from src.emulator.peripherals.screen import *
-
-
-def load_program(filename):
-    with open(filename, "rb") as file:
-        program = file.read()
-
-    for i in range(0, len(program), 2):
-        opcode = program[i] << 8 | program[i + 1]
-        print(format(opcode, '04x'))
+from src.emulator.peripherals.keyboard import *
 
 
 class Chip8:
@@ -17,6 +9,7 @@ class Chip8:
         self.memory = Memory()
         self.registers = Registers()
         self.screen = Screen(64, 32, 10)
+        self.keyboard = Keyboard()
         self.opcode_map = {
             0x00E0: self.clear_screen,
             0x00EE: self.return_subroutine,
@@ -45,6 +38,13 @@ class Chip8:
 
     def execute_machine_lang_at_addr(self, NNN):
         pass
+
+    def load_program(self, filename):
+        with open(filename, "rb") as file:
+            program = file.read()
+
+        for i in range(0, len(program), 2):
+            self.memory.memory[i + 0x200] = program[i]
 
     def load_vx_i(self, opcode):
         register_index_x = (opcode & 0x0F00) >> 8
@@ -199,10 +199,4 @@ class Chip8:
             self.screen.draw()
 
         pygame.quit()
-
-
-
-
-chip8 = Chip8()
-load_program('FILTER.ch8')
 

@@ -47,6 +47,20 @@
 - [X]  Annn - LD I, addr (Set I = nnn)
 - [X]  Fx55 - LD [I], Vx (Store registers V0 through Vx in memory starting at location I)
 - [X]  Fx65 - LD Vx, [I] (Read registers V0 through Vx from memory starting at location I)
+- [ ] CXNN - Vx = rand() & NN (Set VX to the result of a bitwise AND operation on a random number and NN)
+- [ ] DXYN - draw(Vx, Vy, N) (Draws a sprite at coordinate (VX, VY) with a height of N pixels)
+- [ ] FX1E - I += Vx (Adds VX to I. VF is not affected)
+- [ ] FX29 - I = sprite_addr[Vx] (Sets I to the location of the sprite for the character in VX)
+- [ ] FX33 - set_BCD(Vx) (Stores the BCD representation of VX in memory locations I, I+1, I+2)
+
+### 3.5 Instruções de Teclado e Temporizadores
+- [ ] EX9E - if (key() == Vx) (Skips the next instruction if the key stored in VX is pressed)
+- [ ] EXA1 - if (key() != Vx) (Skips the next instruction if the key stored in VX is not pressed)
+- [ ] FX07 - Vx = get_delay() (Sets VX to the value of the delay timer)
+- [ ] FX0A - Vx = get_key() (A key press is awaited, and then stored in VX)
+- [ ] FX15 - delay_timer(Vx) (Sets the delay timer to VX)
+- [ ] FX18 - sound_timer(Vx) (Sets the sound timer to VX)
+
 
 ## 4. Input Handling
 
